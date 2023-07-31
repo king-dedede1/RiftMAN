@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 namespace riftMAN;
 
 // Methods to access the windows API for reading/writing memory to other applications.
-public static partial class WindowsAPI
+internal static partial class WindowsAPI
 {
     [DllImport("kernel32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]

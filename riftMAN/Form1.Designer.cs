@@ -31,6 +31,8 @@
             label1 = new Label();
             textBox1 = new TextBox();
             label2 = new Label();
+            textBox2 = new TextBox();
+            label3 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -53,17 +55,36 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(41, 65);
+            label2.Location = new Point(12, 83);
             label2.Name = "label2";
             label2.Size = new Size(38, 15);
             label2.TabIndex = 2;
             label2.Text = "label2";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(85, 47);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(82, 23);
+            textBox2.TabIndex = 4;
+            textBox2.KeyDown += textBox2_KeyDown;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(12, 50);
+            label3.Name = "label3";
+            label3.Size = new Size(68, 15);
+            label3.TabIndex = 3;
+            label3.Text = "Raritanium:";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(186, 116);
+            Controls.Add(textBox2);
+            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(textBox1);
             Controls.Add(label1);
@@ -78,5 +99,7 @@
         private Label label1;
         private TextBox textBox1;
         private Label label2;
+        private TextBox textBox2;
+        private Label label3;
     }
 }

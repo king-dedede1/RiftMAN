@@ -32,7 +32,7 @@ internal class RiftMANState
         if (processes.Length == 0)
         {
             MessageBox.Show("You need to start the game first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            Application.Exit();
+            Environment.Exit(0);
         }
         GameProcess = processes[0];
         GameCodeBaseAddr = (ulong) GameProcess.MainModule.BaseAddress; // Surely this won't cause a problem?

@@ -25,7 +25,9 @@ internal class RiftMANState
 
     public Process GameProcess { get; private set; }
     public ulong GameCodeBaseAddr { get; private set; }
+    public string GameVersion { get; private set; }
 
+    // Connect to game
     private RiftMANState()
     {
         var processes = Process.GetProcessesByName("RiftApart");
@@ -35,7 +37,10 @@ internal class RiftMANState
             Environment.Exit(0);
         }
         GameProcess = processes[0];
-        GameCodeBaseAddr = (ulong) GameProcess.MainModule.BaseAddress; // Surely this won't cause a problem?
+
+        // GameProcess is never going to be null, chill out visual studio
+        GameCodeBaseAddr = (ulong) GameProcess.MainModule.BaseAddress;
+        GameVersion = GameProcess.MainModule.FileVersionInfo.FileVersion;
         MessageBox.Show("Attached!");
     }
 

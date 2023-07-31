@@ -12,10 +12,14 @@ public partial class Form1 : Form
         InitializeComponent();
         RiftMANState.Construct();
 
+        // For updating the LEVELID label. This is temporary and will be removed later
         timer = new Timer();
         timer.Tick += Timer_Tick;
         timer.Interval = 16;
         timer.Start();
+
+        // Set window title
+        Text = $"RiftMAN - Connected to Rift Apart v{RiftMANState.Instance.GameVersion}";
     }
 
     private void Timer_Tick(object? sender, EventArgs e)

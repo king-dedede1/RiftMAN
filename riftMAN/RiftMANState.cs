@@ -23,7 +23,8 @@ internal class RiftMANState
         }
     }
 
-    public IntPtr ProcHandle { get; private set; }
+    public Process GameProcess { get; private set; }
+    public ulong GameCodeBaseAddr { get; private set; }
 
     private RiftMANState()
     {
@@ -33,7 +34,8 @@ internal class RiftMANState
             MessageBox.Show("You need to start the game first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             Application.Exit();
         }
-        ProcHandle = processes[0].Handle;
+        GameProcess = processes[0];
+        GameCodeBaseAddr = (ulong) GameProcess.MainModule.BaseAddress; // Surely this won't cause a problem?
         MessageBox.Show("Attached!");
     }
 

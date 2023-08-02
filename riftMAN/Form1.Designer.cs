@@ -29,14 +29,13 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            textBox1 = new TextBox();
+            boltCountTextBox = new TextBox();
             label2 = new Label();
-            textBox2 = new TextBox();
+            rariTextBox = new TextBox();
             label3 = new Label();
             savePositionButton = new Button();
             loadPositionButton = new Button();
             savedPositionComboBox = new ComboBox();
-            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             killYourselfButton = new Button();
             comboBox1 = new ComboBox();
             iThoughtItWouldBeFunnyToMakeThisSayGoButton = new Button();
@@ -47,6 +46,8 @@
             coordsCheckbox = new CheckBox();
             hotkeysButton = new Button();
             coordsLabel = new Label();
+            gameSpeedTextBox = new TextBox();
+            label4 = new Label();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -59,32 +60,32 @@
             label1.TabIndex = 0;
             label1.Text = "Bolt Count:";
             // 
-            // textBox1
+            // boltCountTextBox
             // 
-            textBox1.Enabled = false;
-            textBox1.Location = new Point(332, 12);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(82, 23);
-            textBox1.TabIndex = 1;
-            textBox1.KeyDown += textBox1_KeyDown;
+            boltCountTextBox.Enabled = false;
+            boltCountTextBox.Location = new Point(332, 12);
+            boltCountTextBox.Name = "boltCountTextBox";
+            boltCountTextBox.Size = new Size(82, 23);
+            boltCountTextBox.TabIndex = 1;
+            boltCountTextBox.KeyDown += textBox1_KeyDown;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(353, 123);
+            label2.Location = new Point(311, 175);
             label2.Name = "label2";
             label2.Size = new Size(38, 15);
             label2.TabIndex = 2;
             label2.Text = "label2";
             // 
-            // textBox2
+            // rariTextBox
             // 
-            textBox2.Enabled = false;
-            textBox2.Location = new Point(332, 41);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(82, 23);
-            textBox2.TabIndex = 4;
-            textBox2.KeyDown += textBox2_KeyDown;
+            rariTextBox.Enabled = false;
+            rariTextBox.Location = new Point(332, 41);
+            rariTextBox.Name = "rariTextBox";
+            rariTextBox.Size = new Size(82, 23);
+            rariTextBox.TabIndex = 4;
+            rariTextBox.KeyDown += textBox2_KeyDown;
             // 
             // label3
             // 
@@ -167,7 +168,7 @@
             // unlocksButton
             // 
             unlocksButton.Enabled = false;
-            unlocksButton.Location = new Point(332, 76);
+            unlocksButton.Location = new Point(332, 99);
             unlocksButton.Name = "unlocksButton";
             unlocksButton.Size = new Size(82, 26);
             unlocksButton.TabIndex = 12;
@@ -227,11 +228,30 @@
             coordsLabel.TabIndex = 17;
             coordsLabel.Text = "X:\r\nY:\r\nZ:";
             // 
+            // gameSpeedTextBox
+            // 
+            gameSpeedTextBox.Location = new Point(332, 70);
+            gameSpeedTextBox.Name = "gameSpeedTextBox";
+            gameSpeedTextBox.Size = new Size(82, 23);
+            gameSpeedTextBox.TabIndex = 19;
+            gameSpeedTextBox.KeyDown += gameSpeedTextBox_KeyDown;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(251, 73);
+            label4.Name = "label4";
+            label4.Size = new Size(76, 15);
+            label4.TabIndex = 18;
+            label4.Text = "Game Speed:";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(426, 303);
+            Controls.Add(gameSpeedTextBox);
+            Controls.Add(label4);
             Controls.Add(coordsLabel);
             Controls.Add(hotkeysButton);
             Controls.Add(coordsCheckbox);
@@ -243,10 +263,10 @@
             Controls.Add(savedPositionComboBox);
             Controls.Add(loadPositionButton);
             Controls.Add(savePositionButton);
-            Controls.Add(textBox2);
+            Controls.Add(rariTextBox);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(textBox1);
+            Controls.Add(boltCountTextBox);
             Controls.Add(label1);
             Name = "Form1";
             Text = "RiftMAN";
@@ -258,14 +278,13 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
+        private TextBox boltCountTextBox;
         private Label label2;
-        private TextBox textBox2;
+        private TextBox rariTextBox;
         private Label label3;
         private Button savePositionButton;
         private Button loadPositionButton;
         private ComboBox savedPositionComboBox;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button killYourselfButton;
         private ComboBox comboBox1;
         private Button iThoughtItWouldBeFunnyToMakeThisSayGoButton;
@@ -276,5 +295,7 @@
         private CheckBox coordsCheckbox;
         private Button hotkeysButton;
         private Label coordsLabel;
+        private TextBox gameSpeedTextBox;
+        private Label label4;
     }
 }

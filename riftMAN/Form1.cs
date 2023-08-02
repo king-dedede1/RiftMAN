@@ -10,16 +10,15 @@ public partial class Form1 : Form
     public Form1()
     {
         InitializeComponent();
-        RiftMANState.Construct();
+
+        // Set window title
+        Text = $"RiftMAN - Connected to Rift Apart v{RiftMANState.Instance.GameVersion}";
 
         // For updating the LEVELID label. This is temporary and will be removed later
         timer = new Timer();
         timer.Tick += Timer_Tick;
         timer.Interval = 16;
         timer.Start();
-
-        // Set window title
-        Text = $"RiftMAN - Connected to Rift Apart v{RiftMANState.Instance.GameVersion}";
     }
 
     private void Timer_Tick(object? sender, EventArgs e)
@@ -31,7 +30,7 @@ public partial class Form1 : Form
     {
         if (e.KeyCode == Keys.Enter)
         {
-            Memory.Write(BitConverter.GetBytes(uint.Parse(textBox1.Text)), 0x5150298 + RiftMANState.Instance.GameCodeBaseAddr);
+            Memory.Write(BitConverter.GetBytes(uint.Parse(boltCountTextBox.Text)), 0x5150298 + RiftMANState.Instance.GameCodeBaseAddr);
         }
     }
 
@@ -39,7 +38,22 @@ public partial class Form1 : Form
     {
         if (e.KeyCode == Keys.Enter)
         {
-            Memory.WriteInt(int.Parse(textBox2.Text), RiftMANState.Instance.GameCodeBaseAddr + 0x640F210, 0xF50, 0xC78, 0x88, 0x10, 0x3D8, 0x380, 0x488);
+            Memory.WriteInt(int.Parse(rariTextBox.Text), RiftMANState.Instance.GameCodeBaseAddr + 0x640F210, 0xF50, 0xC78, 0x88, 0x10, 0x3D8, 0x380, 0x488);
+        }
+    }
+
+    private void gameSpeedTextBox_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.KeyCode == Keys.Enter)
+        {
+            if (float.TryParse(gameSpeedTextBox.Text, out float speed))
+            {
+                Memory.Write(BitConverter.GetBytes(speed), RiftMANState.Instance.GameCodeBaseAddr + 0x548F3A0);
+            }
+            else
+            {
+                MessageBox.Show("Couldn't parse number.", "Error",  MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

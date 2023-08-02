@@ -11,17 +11,7 @@ namespace riftMAN;
 internal class RiftMANState
 {
     private static RiftMANState? instance;
-    public static RiftMANState Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new RiftMANState();
-            }
-            return instance;
-        }
-    }
+    public static RiftMANState Instance => instance ??= new RiftMANState();
 
     public Process GameProcess { get; private set; }
     public ulong GameCodeBaseAddr { get; private set; }
@@ -37,18 +27,8 @@ internal class RiftMANState
             Environment.Exit(0);
         }
         GameProcess = processes[0];
-
-        // GameProcess is never going to be null, chill out visual studio
         GameCodeBaseAddr = (ulong) GameProcess.MainModule.BaseAddress;
         GameVersion = GameProcess.MainModule.FileVersionInfo.FileVersion;
         MessageBox.Show("Attached!");
-    }
-
-    public static void Construct()
-    {
-        if (instance == null)
-        {
-            instance = new RiftMANState();
-        }
     }
 }

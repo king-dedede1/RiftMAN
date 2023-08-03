@@ -62,12 +62,11 @@
             // 
             // boltCountTextBox
             // 
-            boltCountTextBox.Enabled = false;
             boltCountTextBox.Location = new Point(332, 12);
             boltCountTextBox.Name = "boltCountTextBox";
             boltCountTextBox.Size = new Size(82, 23);
             boltCountTextBox.TabIndex = 1;
-            boltCountTextBox.KeyDown += textBox1_KeyDown;
+            boltCountTextBox.KeyDown += boltCountTextBox_KeyDown;
             // 
             // label2
             // 
@@ -85,7 +84,6 @@
             rariTextBox.Name = "rariTextBox";
             rariTextBox.Size = new Size(82, 23);
             rariTextBox.TabIndex = 4;
-            rariTextBox.KeyDown += textBox2_KeyDown;
             // 
             // label3
             // 

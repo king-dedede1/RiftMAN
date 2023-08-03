@@ -35,16 +35,6 @@ public partial class Form1 : Form
         label2.Text = $"LEVELID: {Memory.ReadInt(0x5150298 + RiftMANState.Instance.GameCodeBaseAddr)}";
     }
 
-    private void textBox1_KeyDown(object sender, KeyEventArgs e)
-    {
-        
-    }
-
-    private void textBox2_KeyDown(object sender, KeyEventArgs e)
-    {
-        
-    }
-
     private void gameSpeedTextBox_KeyDown(object sender, KeyEventArgs e)
     {
         if (e.KeyCode == Keys.Enter)
@@ -81,6 +71,21 @@ public partial class Form1 : Form
         else
         {
             Memory.WriteByte(0, RiftMANState.Instance.GameCodeBaseAddr + 0x51501B1);
+        }
+    }
+
+    private void boltCountTextBox_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.KeyCode == Keys.Enter)
+        {
+            if (int.TryParse(boltCountTextBox.Text, out var boltCount))
+            {
+                Memory.WriteInt(boltCount, RiftMANState.Instance.GameCodeBaseAddr + 0x52DA338, 0x910, 0x50, 0x298, 0x80);
+            }
+            else
+            {
+                MessageBox.Show("Couldn't parse number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

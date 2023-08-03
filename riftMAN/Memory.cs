@@ -44,6 +44,36 @@ internal static class Memory
         Write(BitConverter.GetBytes(value), baseaddr, offsets);
     }
 
+    public static byte ReadByte(ulong baseaddr, params ulong[] offsets)
+    {
+        return Read(1, baseaddr, offsets)[0];
+    }
+
+    public static void WriteByte(byte value, ulong baseaddr, params ulong[] offsets)
+    {
+        Write(new byte[] { value }, baseaddr, offsets);
+    }
+
+    public static float ReadFloat(ulong baseaddr, params ulong[] offsets)
+    {
+        return BitConverter.ToSingle(Read(4, baseaddr, offsets), 0);
+    }
+
+    public static void WriteFloat(float value, ulong baseaddr, params ulong[] offsets)
+    {
+        Write(BitConverter.GetBytes(value), baseaddr, offsets);
+    }
+
+    public static double ReadDouble(ulong baseaddr, params ulong[] offsets)
+    {
+        return BitConverter.ToDouble(Read(8, baseaddr, offsets), 0);
+    }
+
+    public static void WriteDouble(double value, ulong baseaddr, params ulong[] offsets)
+    {
+        Write(BitConverter.GetBytes(value), baseaddr, offsets);
+    }
+
     // Gets the address at the end of the given pointer path
     public static ulong TraversePointerPath(ulong baseaddr, params ulong[] offsets)
     {

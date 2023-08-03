@@ -23,12 +23,21 @@ internal class RiftMANState
         var processes = Process.GetProcessesByName("RiftApart");
         if (processes.Length == 0)
         {
-            MessageBox.Show("You need to start the game first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Couldn't locate game process. Did you start the game yet?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             Environment.Exit(0);
         }
         GameProcess = processes[0];
+        if (GameProcess.MainModule == null)
+        {
+            MessageBox.Show("Couldn't locate game module.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Environment.Exit(0);
+        }
         GameCodeBaseAddr = (ulong) GameProcess.MainModule.BaseAddress;
+        if (GameProcess.MainModule.FileVersionInfo.FileVersion == null)
+        {
+            MessageBox.Show("Couldn't locate game module.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Environment.Exit(0);
+        }
         GameVersion = GameProcess.MainModule.FileVersionInfo.FileVersion;
-        MessageBox.Show("Attached!");
     }
 }

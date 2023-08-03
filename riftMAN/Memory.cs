@@ -74,7 +74,7 @@ internal static class Memory
 
     private static void writememory(ulong address, byte[] bytes)
     {
-        if (!WindowsAPI.WriteProcessMemory(RiftMANState.Instance.GameProcess.Handle, (nint)address, bytes, (nuint)bytes.Length, out nuint dontcare))
+        if (!WindowsAPI.WriteProcessMemory(RiftMANState.Instance.GameProcess.Handle, (nint)address, bytes, (nuint)bytes.Length, out _))
         {
             throw new IOException($"Unable to write memory. (Error code: 0x{WindowsAPI.GetLastError():X})");
         }

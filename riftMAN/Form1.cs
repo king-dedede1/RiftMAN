@@ -19,6 +19,15 @@ public partial class Form1 : Form
         timer.Tick += Timer_Tick;
         timer.Interval = 16;
         timer.Start();
+
+        if (Memory.Read(1, RiftMANState.Instance.GameCodeBaseAddr + 0x51501B1)[0] == 1)
+        {
+            infiniteAmmoCheckbox.Checked = true;
+        }
+        if (Memory.Read(1, RiftMANState.Instance.GameCodeBaseAddr + 0x51501B0)[0] == 1)
+        {
+            infiniteHealthCheckbox.Checked = true;
+        }
     }
 
     private void Timer_Tick(object? sender, EventArgs e)
@@ -52,8 +61,32 @@ public partial class Form1 : Form
             }
             else
             {
-                MessageBox.Show("Couldn't parse number.", "Error",  MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Couldn't parse number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+    }
+
+    private void infiniteHealthCheckbox_CheckedChanged(object sender, EventArgs e)
+    {
+        if (infiniteHealthCheckbox.Checked)
+        {
+            Memory.Write(new byte[] { 1 }, RiftMANState.Instance.GameCodeBaseAddr + 0x51501B0);
+        }
+        else
+        {
+            Memory.Write(new byte[] { 0 }, RiftMANState.Instance.GameCodeBaseAddr + 0x51501B0);
+        }
+    }
+
+    private void infiniteAmmoCheckbox_CheckedChanged(object sender, EventArgs e)
+    {
+        if (infiniteAmmoCheckbox.Checked)
+        {
+            Memory.Write(new byte[] { 1 }, RiftMANState.Instance.GameCodeBaseAddr + 0x51501B1);
+        }
+        else
+        {
+            Memory.Write(new byte[] { 0 }, RiftMANState.Instance.GameCodeBaseAddr + 0x51501B1);
         }
     }
 }

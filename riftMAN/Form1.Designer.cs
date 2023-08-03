@@ -178,24 +178,24 @@
             // infiniteHealthCheckbox
             // 
             infiniteHealthCheckbox.AutoSize = true;
-            infiniteHealthCheckbox.Enabled = false;
             infiniteHealthCheckbox.Location = new Point(12, 160);
             infiniteHealthCheckbox.Name = "infiniteHealthCheckbox";
             infiniteHealthCheckbox.Size = new Size(101, 19);
             infiniteHealthCheckbox.TabIndex = 13;
             infiniteHealthCheckbox.Text = "Infinite Health";
             infiniteHealthCheckbox.UseVisualStyleBackColor = true;
+            infiniteHealthCheckbox.CheckedChanged += infiniteHealthCheckbox_CheckedChanged;
             // 
             // infiniteAmmoCheckbox
             // 
             infiniteAmmoCheckbox.AutoSize = true;
-            infiniteAmmoCheckbox.Enabled = false;
             infiniteAmmoCheckbox.Location = new Point(12, 185);
             infiniteAmmoCheckbox.Name = "infiniteAmmoCheckbox";
             infiniteAmmoCheckbox.Size = new Size(103, 19);
             infiniteAmmoCheckbox.TabIndex = 14;
             infiniteAmmoCheckbox.Text = "Infinite Ammo";
             infiniteAmmoCheckbox.UseVisualStyleBackColor = true;
+            infiniteAmmoCheckbox.CheckedChanged += infiniteAmmoCheckbox_CheckedChanged;
             // 
             // coordsCheckbox
             // 

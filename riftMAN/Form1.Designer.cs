@@ -48,13 +48,24 @@
             coordsLabel = new Label();
             gameSpeedTextBox = new TextBox();
             label4 = new Label();
+            tabControl1 = new TabControl();
+            trainerTab = new TabPage();
+            modsTab = new TabPage();
+            label6 = new Label();
+            label5 = new Label();
+            openFolderButton = new Button();
+            refreshButton = new Button();
+            modListBox = new CheckedListBox();
             groupBox1.SuspendLayout();
+            tabControl1.SuspendLayout();
+            trainerTab.SuspendLayout();
+            modsTab.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(259, 15);
+            label1.Location = new Point(278, 9);
             label1.Name = "label1";
             label1.Size = new Size(67, 15);
             label1.TabIndex = 0;
@@ -62,7 +73,7 @@
             // 
             // boltCountTextBox
             // 
-            boltCountTextBox.Location = new Point(332, 12);
+            boltCountTextBox.Location = new Point(351, 6);
             boltCountTextBox.Name = "boltCountTextBox";
             boltCountTextBox.Size = new Size(82, 23);
             boltCountTextBox.TabIndex = 1;
@@ -71,7 +82,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(311, 175);
+            label2.Location = new Point(305, 169);
             label2.Name = "label2";
             label2.Size = new Size(38, 15);
             label2.TabIndex = 2;
@@ -80,7 +91,7 @@
             // rariTextBox
             // 
             rariTextBox.Enabled = false;
-            rariTextBox.Location = new Point(332, 41);
+            rariTextBox.Location = new Point(351, 35);
             rariTextBox.Name = "rariTextBox";
             rariTextBox.Size = new Size(82, 23);
             rariTextBox.TabIndex = 4;
@@ -88,7 +99,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(259, 44);
+            label3.Location = new Point(278, 38);
             label3.Name = "label3";
             label3.Size = new Size(68, 15);
             label3.TabIndex = 3;
@@ -97,7 +108,7 @@
             // savePositionButton
             // 
             savePositionButton.Enabled = false;
-            savePositionButton.Location = new Point(12, 12);
+            savePositionButton.Location = new Point(6, 6);
             savePositionButton.Name = "savePositionButton";
             savePositionButton.Size = new Size(111, 26);
             savePositionButton.TabIndex = 5;
@@ -107,7 +118,7 @@
             // loadPositionButton
             // 
             loadPositionButton.Enabled = false;
-            loadPositionButton.Location = new Point(12, 44);
+            loadPositionButton.Location = new Point(6, 38);
             loadPositionButton.Name = "loadPositionButton";
             loadPositionButton.Size = new Size(111, 26);
             loadPositionButton.TabIndex = 6;
@@ -118,7 +129,7 @@
             // 
             savedPositionComboBox.Enabled = false;
             savedPositionComboBox.FormattingEnabled = true;
-            savedPositionComboBox.Location = new Point(129, 12);
+            savedPositionComboBox.Location = new Point(123, 6);
             savedPositionComboBox.Name = "savedPositionComboBox";
             savedPositionComboBox.Size = new Size(57, 23);
             savedPositionComboBox.TabIndex = 7;
@@ -126,7 +137,7 @@
             // killYourselfButton
             // 
             killYourselfButton.Enabled = false;
-            killYourselfButton.Location = new Point(12, 76);
+            killYourselfButton.Location = new Point(6, 70);
             killYourselfButton.Name = "killYourselfButton";
             killYourselfButton.Size = new Size(111, 26);
             killYourselfButton.TabIndex = 8;
@@ -156,7 +167,7 @@
             // 
             groupBox1.Controls.Add(iThoughtItWouldBeFunnyToMakeThisSayGoButton);
             groupBox1.Controls.Add(comboBox1);
-            groupBox1.Location = new Point(3, 108);
+            groupBox1.Location = new Point(-3, 102);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(197, 46);
             groupBox1.TabIndex = 11;
@@ -166,7 +177,7 @@
             // unlocksButton
             // 
             unlocksButton.Enabled = false;
-            unlocksButton.Location = new Point(332, 99);
+            unlocksButton.Location = new Point(351, 93);
             unlocksButton.Name = "unlocksButton";
             unlocksButton.Size = new Size(82, 26);
             unlocksButton.TabIndex = 12;
@@ -176,7 +187,7 @@
             // infiniteHealthCheckbox
             // 
             infiniteHealthCheckbox.AutoSize = true;
-            infiniteHealthCheckbox.Location = new Point(12, 160);
+            infiniteHealthCheckbox.Location = new Point(6, 154);
             infiniteHealthCheckbox.Name = "infiniteHealthCheckbox";
             infiniteHealthCheckbox.Size = new Size(101, 19);
             infiniteHealthCheckbox.TabIndex = 13;
@@ -187,7 +198,7 @@
             // infiniteAmmoCheckbox
             // 
             infiniteAmmoCheckbox.AutoSize = true;
-            infiniteAmmoCheckbox.Location = new Point(12, 185);
+            infiniteAmmoCheckbox.Location = new Point(6, 179);
             infiniteAmmoCheckbox.Name = "infiniteAmmoCheckbox";
             infiniteAmmoCheckbox.Size = new Size(103, 19);
             infiniteAmmoCheckbox.TabIndex = 14;
@@ -199,7 +210,7 @@
             // 
             coordsCheckbox.AutoSize = true;
             coordsCheckbox.Enabled = false;
-            coordsCheckbox.Location = new Point(12, 210);
+            coordsCheckbox.Location = new Point(6, 204);
             coordsCheckbox.Name = "coordsCheckbox";
             coordsCheckbox.Size = new Size(122, 19);
             coordsCheckbox.TabIndex = 15;
@@ -209,7 +220,7 @@
             // hotkeysButton
             // 
             hotkeysButton.Enabled = false;
-            hotkeysButton.Location = new Point(311, 247);
+            hotkeysButton.Location = new Point(326, 269);
             hotkeysButton.Name = "hotkeysButton";
             hotkeysButton.Size = new Size(103, 44);
             hotkeysButton.TabIndex = 16;
@@ -220,7 +231,7 @@
             // 
             coordsLabel.AutoSize = true;
             coordsLabel.Font = new Font("Consolas", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            coordsLabel.Location = new Point(12, 232);
+            coordsLabel.Location = new Point(6, 226);
             coordsLabel.Name = "coordsLabel";
             coordsLabel.Size = new Size(30, 66);
             coordsLabel.TabIndex = 17;
@@ -228,7 +239,7 @@
             // 
             // gameSpeedTextBox
             // 
-            gameSpeedTextBox.Location = new Point(332, 70);
+            gameSpeedTextBox.Location = new Point(351, 64);
             gameSpeedTextBox.Name = "gameSpeedTextBox";
             gameSpeedTextBox.Size = new Size(82, 23);
             gameSpeedTextBox.TabIndex = 19;
@@ -237,40 +248,134 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(251, 73);
+            label4.Location = new Point(270, 67);
             label4.Name = "label4";
             label4.Size = new Size(76, 15);
             label4.TabIndex = 18;
             label4.Text = "Game Speed:";
             // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(trainerTab);
+            tabControl1.Controls.Add(modsTab);
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Location = new Point(0, 0);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(446, 348);
+            tabControl1.TabIndex = 20;
+            // 
+            // trainerTab
+            // 
+            trainerTab.Controls.Add(savePositionButton);
+            trainerTab.Controls.Add(gameSpeedTextBox);
+            trainerTab.Controls.Add(label1);
+            trainerTab.Controls.Add(label4);
+            trainerTab.Controls.Add(boltCountTextBox);
+            trainerTab.Controls.Add(coordsLabel);
+            trainerTab.Controls.Add(label2);
+            trainerTab.Controls.Add(hotkeysButton);
+            trainerTab.Controls.Add(label3);
+            trainerTab.Controls.Add(coordsCheckbox);
+            trainerTab.Controls.Add(rariTextBox);
+            trainerTab.Controls.Add(infiniteAmmoCheckbox);
+            trainerTab.Controls.Add(loadPositionButton);
+            trainerTab.Controls.Add(infiniteHealthCheckbox);
+            trainerTab.Controls.Add(savedPositionComboBox);
+            trainerTab.Controls.Add(unlocksButton);
+            trainerTab.Controls.Add(killYourselfButton);
+            trainerTab.Controls.Add(groupBox1);
+            trainerTab.Location = new Point(4, 24);
+            trainerTab.Name = "trainerTab";
+            trainerTab.Padding = new Padding(3);
+            trainerTab.Size = new Size(438, 320);
+            trainerTab.TabIndex = 0;
+            trainerTab.Text = "Trainer";
+            trainerTab.UseVisualStyleBackColor = true;
+            // 
+            // modsTab
+            // 
+            modsTab.Controls.Add(label6);
+            modsTab.Controls.Add(label5);
+            modsTab.Controls.Add(openFolderButton);
+            modsTab.Controls.Add(refreshButton);
+            modsTab.Controls.Add(modListBox);
+            modsTab.Location = new Point(4, 24);
+            modsTab.Name = "modsTab";
+            modsTab.Padding = new Padding(3);
+            modsTab.Size = new Size(438, 320);
+            modsTab.TabIndex = 1;
+            modsTab.Text = "Mods";
+            modsTab.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(8, 227);
+            label6.Name = "label6";
+            label6.Size = new Size(98, 75);
+            label6.TabIndex = 4;
+            label6.Text = "Name: \r\nDescription: \r\nMod Version: \r\nAuthor: \r\nGame Version(s): ";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(110, 41);
+            label5.Name = "label5";
+            label5.Size = new Size(88, 15);
+            label5.TabIndex = 3;
+            label5.Text = "Available Mods";
+            // 
+            // openFolderButton
+            // 
+            openFolderButton.Location = new Point(306, 41);
+            openFolderButton.Name = "openFolderButton";
+            openFolderButton.Size = new Size(124, 29);
+            openFolderButton.TabIndex = 2;
+            openFolderButton.Text = "Open Mods Folder...";
+            openFolderButton.UseVisualStyleBackColor = true;
+            openFolderButton.Click += openFolderButton_Click;
+            // 
+            // refreshButton
+            // 
+            refreshButton.Location = new Point(306, 6);
+            refreshButton.Name = "refreshButton";
+            refreshButton.Size = new Size(124, 29);
+            refreshButton.TabIndex = 1;
+            refreshButton.Text = "Refresh";
+            refreshButton.UseVisualStyleBackColor = true;
+            refreshButton.Click += refreshButton_Click;
+            // 
+            // modListBox
+            // 
+            modListBox.BackColor = SystemColors.Menu;
+            modListBox.BorderStyle = BorderStyle.FixedSingle;
+            modListBox.FormattingEnabled = true;
+            modListBox.Location = new Point(8, 83);
+            modListBox.Name = "modListBox";
+            modListBox.Size = new Size(422, 128);
+            modListBox.TabIndex = 0;
+            modListBox.ItemCheck += modListBox_ItemCheck;
+            modListBox.SelectedIndexChanged += modListBox_SelectedIndexChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(426, 303);
-            Controls.Add(gameSpeedTextBox);
-            Controls.Add(label4);
-            Controls.Add(coordsLabel);
-            Controls.Add(hotkeysButton);
-            Controls.Add(coordsCheckbox);
-            Controls.Add(infiniteAmmoCheckbox);
-            Controls.Add(infiniteHealthCheckbox);
-            Controls.Add(unlocksButton);
-            Controls.Add(groupBox1);
-            Controls.Add(killYourselfButton);
-            Controls.Add(savedPositionComboBox);
-            Controls.Add(loadPositionButton);
-            Controls.Add(savePositionButton);
-            Controls.Add(rariTextBox);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(boltCountTextBox);
-            Controls.Add(label1);
+            BackColor = Color.SkyBlue;
+            ClientSize = new Size(446, 348);
+            Controls.Add(tabControl1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "Form1";
             Text = "RiftMAN";
             groupBox1.ResumeLayout(false);
+            tabControl1.ResumeLayout(false);
+            trainerTab.ResumeLayout(false);
+            trainerTab.PerformLayout();
+            modsTab.ResumeLayout(false);
+            modsTab.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -295,5 +400,13 @@
         private Label coordsLabel;
         private TextBox gameSpeedTextBox;
         private Label label4;
+        private TabControl tabControl1;
+        private TabPage trainerTab;
+        private TabPage modsTab;
+        private CheckedListBox modListBox;
+        private Label label5;
+        private Button openFolderButton;
+        private Button refreshButton;
+        private Label label6;
     }
 }

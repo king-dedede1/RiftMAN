@@ -1,3 +1,5 @@
+using riftMAN.Mods;
+using System.Diagnostics;
 using Timer = System.Windows.Forms.Timer;
 
 namespace riftMAN;
@@ -28,6 +30,8 @@ public partial class Form1 : Form
         {
             infiniteHealthCheckbox.Checked = true;
         }
+
+        RefreshModList();
     }
 
     private void Timer_Tick(object? sender, EventArgs e)
@@ -86,6 +90,53 @@ public partial class Form1 : Form
             {
                 MessageBox.Show("Couldn't parse number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+    }
+
+    void RefreshModList()
+    {
+        label6.Text = @"Name: 
+Description: 
+Mod Version: 
+Author: 
+Game Version(s): 
+";
+        RiftMANState.Instance.LoadModInfos();
+        modListBox.Items.Clear();
+        foreach (ModInfo mInfo in RiftMANState.Instance.Mods)
+        {
+            modListBox.Items.Add(mInfo.Name);
+        }
+    }
+
+    private void refreshButton_Click(object sender, EventArgs e)
+    {
+        RefreshModList();
+    }
+
+    private void modListBox_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (modListBox.SelectedIndex < 0) return;
+        ModInfo mInfo = RiftMANState.Instance.Mods[modListBox.SelectedIndex];
+        label6.Text = $"Name: {mInfo.Name}\nDescription: {mInfo.Description}\nMod Version: {mInfo.ModVersion}\nAuthor: {mInfo.AuthorName}\nGame Version(s): {mInfo.GameVersions.ToCSVString()}";
+    }
+
+    private void openFolderButton_Click(object sender, EventArgs e)
+    {
+        Process.Start("explorer.exe", Path.GetFullPath("Mods"));
+    }
+
+    private void modListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+    {
+        ModInfo mInfo = RiftMANState.Instance.Mods[modListBox.SelectedIndex];
+
+        if (e.NewValue == CheckState.Checked)
+        {
+            ModInfo.EnableMod(mInfo);
+        }
+        else
+        {
+            ModInfo.DisableMod(mInfo);
         }
     }
 }

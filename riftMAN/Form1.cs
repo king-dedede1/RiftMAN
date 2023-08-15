@@ -1,5 +1,6 @@
 using riftMAN.Mods;
 using System.Diagnostics;
+using System.IO.Compression;
 using Timer = System.Windows.Forms.Timer;
 
 namespace riftMAN;
@@ -137,6 +138,27 @@ Game Version(s):
         else
         {
             ModInfo.DisableMod(mInfo);
+        }
+    }
+
+    private void addZipButton_Click(object sender, EventArgs e)
+    {
+        using (OpenFileDialog openFileDialog = new OpenFileDialog())
+        {
+            openFileDialog.Filter = "ZIP file (*.zip)|*.zip";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    ZipFile.ExtractToDirectory(openFileDialog.FileName, "Mods");
+                    RefreshModList();
+                }
+                catch
+                {
+                    MessageBox.Show("Unable to import mod.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

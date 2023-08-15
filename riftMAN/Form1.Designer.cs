@@ -56,6 +56,7 @@
             openFolderButton = new Button();
             refreshButton = new Button();
             modListBox = new CheckedListBox();
+            addZipButton = new Button();
             groupBox1.SuspendLayout();
             tabControl1.SuspendLayout();
             trainerTab.SuspendLayout();
@@ -295,6 +296,7 @@
             // 
             // modsTab
             // 
+            modsTab.Controls.Add(addZipButton);
             modsTab.Controls.Add(label6);
             modsTab.Controls.Add(label5);
             modsTab.Controls.Add(openFolderButton);
@@ -339,9 +341,9 @@
             // 
             // refreshButton
             // 
-            refreshButton.Location = new Point(306, 6);
+            refreshButton.Location = new Point(372, 6);
             refreshButton.Name = "refreshButton";
-            refreshButton.Size = new Size(124, 29);
+            refreshButton.Size = new Size(58, 29);
             refreshButton.TabIndex = 1;
             refreshButton.Text = "Refresh";
             refreshButton.UseVisualStyleBackColor = true;
@@ -358,6 +360,16 @@
             modListBox.TabIndex = 0;
             modListBox.ItemCheck += modListBox_ItemCheck;
             modListBox.SelectedIndexChanged += modListBox_SelectedIndexChanged;
+            // 
+            // addZipButton
+            // 
+            addZipButton.Location = new Point(306, 6);
+            addZipButton.Name = "addZipButton";
+            addZipButton.Size = new Size(60, 29);
+            addZipButton.TabIndex = 5;
+            addZipButton.Text = "Add ZIP";
+            addZipButton.UseVisualStyleBackColor = true;
+            addZipButton.Click += addZipButton_Click;
             // 
             // Form1
             // 
@@ -409,5 +421,6 @@
         private Button openFolderButton;
         private Button refreshButton;
         private Label label6;
+        private Button addZipButton;
     }
 }

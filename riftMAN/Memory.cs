@@ -8,8 +8,9 @@ namespace riftMAN;
 
 internal static class Memory
 {
-    public static void Write(byte[] bytes, ulong baseaddr, params ulong[] offsets)
+    public static void Write(bool addGameOffset, byte[] bytes, ulong baseaddr, params ulong[] offsets)
     {
+        if (addGameOffset) baseaddr += RiftMANState.Instance.GameCodeBaseAddr;
         if (offsets == null || offsets.Length == 0)
         {
             // Writing to a base address. Not a pointer path.
@@ -22,8 +23,14 @@ internal static class Memory
         }
     }
 
-    public static byte[] Read(uint size, ulong baseaddr, params ulong[] offsets)
+    public static void Write(byte[] bytes, ulong baseaddr, params ulong[] offsets)
     {
+        Write(true, bytes, baseaddr, offsets);
+    }
+
+    public static byte[] Read(bool addGameOffset, uint size, ulong baseaddr, params ulong[] offsets)
+    {
+        if (addGameOffset) baseaddr += RiftMANState.Instance.GameCodeBaseAddr;
         if (offsets == null || offsets.Length == 0)
         {
             return readmemory(baseaddr, size);
@@ -32,6 +39,11 @@ internal static class Memory
         {
             return readmemory(TraversePointerPath(baseaddr, offsets), size);
         }
+    }
+
+    public static byte[] Read(uint size, ulong baseaddr, params ulong[] offsets)
+    {
+        return Read(true, size, baseaddr, offsets);
     }
 
     public static int ReadInt(ulong baseaddr, params ulong[] offsets)

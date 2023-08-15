@@ -22,11 +22,11 @@ public partial class Form1 : Form
         timer.Interval = 16;
         timer.Start();
 
-        if (Memory.ReadByte(RiftMANState.Instance.GameCodeBaseAddr + 0x51501B1) == 1)
+        if (Memory.ReadByte(0x51501B1) == 1)
         {
             infiniteAmmoCheckbox.Checked = true;
         }
-        if (Memory.ReadByte(RiftMANState.Instance.GameCodeBaseAddr + 0x51501B0) == 1)
+        if (Memory.ReadByte(0x51501B0) == 1)
         {
             infiniteHealthCheckbox.Checked = true;
         }
@@ -36,7 +36,7 @@ public partial class Form1 : Form
 
     private void Timer_Tick(object? sender, EventArgs e)
     {
-        label2.Text = $"LEVELID: {Memory.ReadInt(0x5150298 + RiftMANState.Instance.GameCodeBaseAddr)}";
+        label2.Text = $"LEVELID: {Memory.ReadInt(0x5150298)}";
     }
 
     private void gameSpeedTextBox_KeyDown(object sender, KeyEventArgs e)
@@ -45,7 +45,7 @@ public partial class Form1 : Form
         {
             if (float.TryParse(gameSpeedTextBox.Text, out float speed))
             {
-                Memory.WriteFloat(speed, RiftMANState.Instance.GameCodeBaseAddr + 0x548F3A0);
+                Memory.WriteFloat(speed, 0x548F3A0);
             }
             else
             {
@@ -58,11 +58,11 @@ public partial class Form1 : Form
     {
         if (infiniteHealthCheckbox.Checked)
         {
-            Memory.WriteByte(1, RiftMANState.Instance.GameCodeBaseAddr + 0x51501B0);
+            Memory.WriteByte(1, 0x51501B0);
         }
         else
         {
-            Memory.WriteByte(0, RiftMANState.Instance.GameCodeBaseAddr + 0x51501B0);
+            Memory.WriteByte(0, 0x51501B0);
         }
     }
 
@@ -70,11 +70,11 @@ public partial class Form1 : Form
     {
         if (infiniteAmmoCheckbox.Checked)
         {
-            Memory.WriteByte(1, RiftMANState.Instance.GameCodeBaseAddr + 0x51501B1);
+            Memory.WriteByte(1, 0x51501B1);
         }
         else
         {
-            Memory.WriteByte(0, RiftMANState.Instance.GameCodeBaseAddr + 0x51501B1);
+            Memory.WriteByte(0, 0x51501B1);
         }
     }
 
@@ -84,7 +84,7 @@ public partial class Form1 : Form
         {
             if (int.TryParse(boltCountTextBox.Text, out var boltCount))
             {
-                Memory.WriteInt(boltCount, RiftMANState.Instance.GameCodeBaseAddr + 0x52DA338, 0x910, 0x50, 0x298, 0x80);
+                Memory.WriteInt(boltCount, 0x52DA338, 0x910, 0x50, 0x298, 0x80);
             }
             else
             {

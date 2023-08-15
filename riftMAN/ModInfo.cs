@@ -35,8 +35,8 @@ internal class ModInfo
             foreach (PatchInfo patch in mInfo.Patches)
             {
                 byte[] patchBytes = File.ReadAllBytes($"{mInfo.ModFolderPath}\\{patch.FilePath}");
-                defaultGameCode.Add(patch, Memory.Read((uint)patchBytes.Length, patch.Address + RiftMANState.Instance.GameCodeBaseAddr));
-                Memory.Write(patchBytes, patch.Address + RiftMANState.Instance.GameCodeBaseAddr);
+                defaultGameCode.Add(patch, Memory.Read((uint)patchBytes.Length, patch.Address));
+                Memory.Write(patchBytes, patch.Address);
             }
         }
     }
@@ -47,7 +47,7 @@ internal class ModInfo
         {
             foreach (PatchInfo patch in mInfo.Patches)
             {
-                Memory.Write(defaultGameCode[patch], patch.Address + RiftMANState.Instance.GameCodeBaseAddr);
+                Memory.Write(defaultGameCode[patch], patch.Address);
                 defaultGameCode.Remove(patch);
             }
         }

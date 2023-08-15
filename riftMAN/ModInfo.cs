@@ -66,7 +66,7 @@ public class ModInfo
                 };
                 scriptTimer.Tick += Timer_Tick;
                 scripts.Add(sInfo, (script, scriptTimer));
-                script.Start(RiftMANState.Instance);
+                script.Start();
                 scriptTimer.Start();
             }
         }
@@ -88,7 +88,7 @@ public class ModInfo
             {
                 scripts[sInfo].timer.Stop();
                 var script = scripts[sInfo].script;
-                script.Stop(RiftMANState.Instance);
+                script.Stop();
                 scripts.Remove(sInfo);
             }
         }
@@ -97,7 +97,7 @@ public class ModInfo
     private static void Timer_Tick(object? sender, EventArgs e)
     {
         Script script = (sender as Timer).Tag as Script;
-        script.Update(RiftMANState.Instance);
+        script.Update();
     }
 
 }

@@ -14,23 +14,23 @@ public abstract class Script
     /// <summary>
     /// Method that is called when the script is updated.
     /// </summary>
-    /// <param name="state">RiftMAN's current state</param>
-    public abstract void Update(RiftMANState state);
+    public virtual void Update() { }
 
     /// <summary>
     /// Method that is called when the mod is enabled, before the first time it is updated.
     /// </summary>
-    /// <param name="state">RiftMAN's current state</param>
-    public abstract void Start(RiftMANState state);
+    public virtual void Start() { }
 
     /// <summary>
     /// Method that is called when the mod is disabled.
     /// </summary>
-    /// <param name="state">RiftMAN's current state</param>
-    public abstract void Stop(RiftMANState state);
+    public virtual void Stop() { }
 
     /// <summary>
     /// How long to wait between updates of this script, in milliseconds. Default is 16.
     /// </summary>
     public virtual int Interval => 16;
+
+    // RiftMAN's state to be accessed by mod scripts.
+    public static RiftMANState State => RiftMANState.Instance;
 }

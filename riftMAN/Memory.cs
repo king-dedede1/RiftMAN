@@ -103,6 +103,17 @@ public static class Memory
 
     }
 
+    public static ulong Malloc(ulong startAddr, int size)
+    {
+        var res = WindowsAPI.VirtualAllocEx(RiftMANState.Instance.GameProcess.Handle, (nint)startAddr,
+            (nuint)size, WindowsAPI.AllocationType.MEM_RESERVE | WindowsAPI.AllocationType.MEM_COMMIT, 0);
+        if (res == 0)
+        {
+            throw new Exception($"Unable to allocate memory. (Error code: 0x{WindowsAPI.GetLastError():X}");
+        }
+        return (ulong) res;
+    }
+
     private static byte[] readmemory(ulong address, uint size)
     {
         byte[] array = new byte[size];

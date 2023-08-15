@@ -85,7 +85,8 @@ public partial class Form1 : Form
         {
             if (int.TryParse(boltCountTextBox.Text, out var boltCount))
             {
-                Memory.WriteInt(boltCount, 0x52DA338, 0x910, 0x50, 0x298, 0x80);
+                Memory.WriteInt(boltCount, 0x52DB338, 0x910, 0x50, 0x298, 0x80);
+                // Old: 52DA338
             }
             else
             {

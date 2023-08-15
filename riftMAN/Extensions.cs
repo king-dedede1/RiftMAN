@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace riftMAN;
-internal static class Extensions
+public static class Extensions
 {
     public static string ToCSVString(this string[] input)
     {

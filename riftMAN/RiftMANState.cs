@@ -9,7 +9,7 @@ using riftMAN.Mods;
 
 namespace riftMAN;
 
-internal class RiftMANState
+public class RiftMANState
 {
     private static RiftMANState? instance;
     public static RiftMANState Instance => instance ??= new RiftMANState();

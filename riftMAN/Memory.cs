@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace riftMAN;
 
-internal static class Memory
+public static class Memory
 {
     public static void Write(bool addGameOffset, byte[] bytes, ulong baseaddr, params ulong[] offsets)
     {

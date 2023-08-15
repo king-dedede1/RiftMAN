@@ -320,9 +320,10 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(110, 41);
+            label5.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(8, 15);
             label5.Name = "label5";
-            label5.Size = new Size(88, 15);
+            label5.Size = new Size(227, 40);
             label5.TabIndex = 3;
             label5.Text = "Available Mods";
             // 

@@ -20,6 +20,8 @@ internal class ModInfo
     [JsonIgnore]
     public string ModFolderPath { get; set; } // used for loading patches/scripts from disk
 
+    private static Dictionary<PatchInfo, byte[]> defaultGameCode = new();
+
     public class PatchInfo
     {
         public string FilePath { get; set; }
@@ -33,14 +35,21 @@ internal class ModInfo
             foreach (PatchInfo patch in mInfo.Patches)
             {
                 byte[] patchBytes = File.ReadAllBytes($"{mInfo.ModFolderPath}\\{patch.FilePath}");
-                Memory.Write(patchBytes, patch.Address);
+                defaultGameCode.Add(patch, Memory.Read((uint)patchBytes.Length, patch.Address + RiftMANState.Instance.GameCodeBaseAddr));
+                Memory.Write(patchBytes, patch.Address + RiftMANState.Instance.GameCodeBaseAddr);
             }
         }
     }
 
     public static void DisableMod(ModInfo mInfo)
     {
-        // Restore original game code
-        // I'll do it later
+        if (mInfo.Patches != null)
+        {
+            foreach (PatchInfo patch in mInfo.Patches)
+            {
+                Memory.Write(defaultGameCode[patch], patch.Address + RiftMANState.Instance.GameCodeBaseAddr);
+                defaultGameCode.Remove(patch);
+            }
+        }
     }
 }

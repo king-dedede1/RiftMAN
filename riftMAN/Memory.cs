@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.Pkcs;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -112,6 +113,15 @@ public static class Memory
             throw new Exception($"Unable to allocate memory. (Error code: 0x{WindowsAPI.GetLastError():X}");
         }
         return (ulong) res;
+    }
+
+    public static void Mfree(ulong addr)
+    {
+        var res = WindowsAPI.VirtualFreeEx(RiftMANState.Instance.GameProcess.Handle, (nint)addr, 0, WindowsAPI.FreeType.MEM_RELEASE);
+        if (!res)
+        {
+            throw new Exception($"Unable to free memory. (Error code: 0x{WindowsAPI.GetLastError():X}");
+        }
     }
 
     private static byte[] readmemory(ulong address, uint size)

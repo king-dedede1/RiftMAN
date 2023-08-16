@@ -51,12 +51,12 @@
             tabControl1 = new TabControl();
             trainerTab = new TabPage();
             modsTab = new TabPage();
+            addZipButton = new Button();
             label6 = new Label();
             label5 = new Label();
             openFolderButton = new Button();
             refreshButton = new Button();
             modListBox = new CheckedListBox();
-            addZipButton = new Button();
             groupBox1.SuspendLayout();
             tabControl1.SuspendLayout();
             trainerTab.SuspendLayout();
@@ -188,6 +188,7 @@
             // infiniteHealthCheckbox
             // 
             infiniteHealthCheckbox.AutoSize = true;
+            infiniteHealthCheckbox.Enabled = false;
             infiniteHealthCheckbox.Location = new Point(6, 154);
             infiniteHealthCheckbox.Name = "infiniteHealthCheckbox";
             infiniteHealthCheckbox.Size = new Size(101, 19);
@@ -199,6 +200,7 @@
             // infiniteAmmoCheckbox
             // 
             infiniteAmmoCheckbox.AutoSize = true;
+            infiniteAmmoCheckbox.Enabled = false;
             infiniteAmmoCheckbox.Location = new Point(6, 179);
             infiniteAmmoCheckbox.Name = "infiniteAmmoCheckbox";
             infiniteAmmoCheckbox.Size = new Size(103, 19);
@@ -240,6 +242,7 @@
             // 
             // gameSpeedTextBox
             // 
+            gameSpeedTextBox.Enabled = false;
             gameSpeedTextBox.Location = new Point(351, 64);
             gameSpeedTextBox.Name = "gameSpeedTextBox";
             gameSpeedTextBox.Size = new Size(82, 23);
@@ -310,6 +313,16 @@
             modsTab.Text = "Mods";
             modsTab.UseVisualStyleBackColor = true;
             // 
+            // addZipButton
+            // 
+            addZipButton.Location = new Point(306, 6);
+            addZipButton.Name = "addZipButton";
+            addZipButton.Size = new Size(60, 29);
+            addZipButton.TabIndex = 5;
+            addZipButton.Text = "Add ZIP";
+            addZipButton.UseVisualStyleBackColor = true;
+            addZipButton.Click += addZipButton_Click;
+            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -360,16 +373,6 @@
             modListBox.TabIndex = 0;
             modListBox.ItemCheck += modListBox_ItemCheck;
             modListBox.SelectedIndexChanged += modListBox_SelectedIndexChanged;
-            // 
-            // addZipButton
-            // 
-            addZipButton.Location = new Point(306, 6);
-            addZipButton.Name = "addZipButton";
-            addZipButton.Size = new Size(60, 29);
-            addZipButton.TabIndex = 5;
-            addZipButton.Text = "Add ZIP";
-            addZipButton.UseVisualStyleBackColor = true;
-            addZipButton.Click += addZipButton_Click;
             // 
             // Form1
             // 

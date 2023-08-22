@@ -57,6 +57,7 @@
             openFolderButton = new Button();
             refreshButton = new Button();
             modListBox = new CheckedListBox();
+            label7 = new Label();
             groupBox1.SuspendLayout();
             tabControl1.SuspendLayout();
             trainerTab.SuspendLayout();
@@ -74,6 +75,7 @@
             // 
             // boltCountTextBox
             // 
+            boltCountTextBox.Enabled = false;
             boltCountTextBox.Location = new Point(351, 6);
             boltCountTextBox.Name = "boltCountTextBox";
             boltCountTextBox.Size = new Size(82, 23);
@@ -83,7 +85,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(305, 169);
+            label2.Location = new Point(197, 9);
             label2.Name = "label2";
             label2.Size = new Size(38, 15);
             label2.TabIndex = 2;
@@ -234,7 +236,7 @@
             // 
             coordsLabel.AutoSize = true;
             coordsLabel.Font = new Font("Consolas", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            coordsLabel.Location = new Point(6, 226);
+            coordsLabel.Location = new Point(248, 157);
             coordsLabel.Name = "coordsLabel";
             coordsLabel.Size = new Size(30, 66);
             coordsLabel.TabIndex = 17;
@@ -271,6 +273,7 @@
             // 
             // trainerTab
             // 
+            trainerTab.Controls.Add(label7);
             trainerTab.Controls.Add(savePositionButton);
             trainerTab.Controls.Add(gameSpeedTextBox);
             trainerTab.Controls.Add(label1);
@@ -336,11 +339,11 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(8, 15);
+            label5.Location = new Point(8, 19);
             label5.Name = "label5";
-            label5.Size = new Size(227, 40);
+            label5.Size = new Size(184, 40);
             label5.TabIndex = 3;
-            label5.Text = "Available Mods";
+            label5.Text = "Mod Loader";
             // 
             // openFolderButton
             // 
@@ -373,6 +376,15 @@
             modListBox.TabIndex = 0;
             modListBox.ItemCheck += modListBox_ItemCheck;
             modListBox.SelectedIndexChanged += modListBox_SelectedIndexChanged;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(28, 269);
+            label7.Name = "label7";
+            label7.Size = new Size(241, 15);
+            label7.TabIndex = 20;
+            label7.Text = "Grayed-out items have not been created yet.";
             // 
             // Form1
             // 
@@ -425,5 +437,6 @@
         private Button refreshButton;
         private Label label6;
         private Button addZipButton;
+        private Label label7;
     }
 }

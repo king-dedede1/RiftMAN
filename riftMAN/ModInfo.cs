@@ -38,8 +38,24 @@ public class ModInfo
         public string? ClassName { get; set; }
     }
 
-    public static void EnableMod(ModInfo mInfo)
+
+    // these static functions might be better somewhere esle
+    // ModLoader static class??
+    public static bool EnableMod(ModInfo mInfo)
     {
+        if (mInfo.GameVersions.Length > 0 && !mInfo.GameVersions.Contains(RiftMANState.Instance.GameVersion))
+        {
+            if (MessageBox.Show(
+                $"This mod doesn't support the current game version ({RiftMANState.Instance.GameVersion}). It may not function correctly. Proceed?",
+                "Warning",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning,
+                MessageBoxDefaultButton.Button2
+                ) == DialogResult.No)
+            {
+                return false;
+            }
+        }
         if (mInfo.Patches != null)
         {
             foreach (PatchInfo patch in mInfo.Patches)
@@ -70,6 +86,7 @@ public class ModInfo
                 scriptTimer.Start();
             }
         }
+        return true;
     }
 
     public static void DisableMod(ModInfo mInfo)

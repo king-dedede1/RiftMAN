@@ -134,7 +134,11 @@ Game Version(s):
 
         if (e.NewValue == CheckState.Checked)
         {
-            ModInfo.EnableMod(mInfo);
+            if (!ModInfo.EnableMod(mInfo))
+            {
+                // Mod failed to load
+                e.NewValue = CheckState.Unchecked;
+            }
         }
         else
         {

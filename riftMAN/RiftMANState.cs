@@ -37,7 +37,7 @@ public class RiftMANState
         GameCodeBaseAddr = (ulong) GameProcess.MainModule.BaseAddress;
         if (GameProcess.MainModule.FileVersionInfo.FileVersion == null)
         {
-            MessageBox.Show("Couldn't locate game module.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Couldn't obtain game version.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             Environment.Exit(0);
         }
         GameVersion = GameProcess.MainModule.FileVersionInfo.FileVersion;
